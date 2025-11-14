@@ -394,8 +394,9 @@
 
     .player-main {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
       flex: 1;
       min-width: 0;
     }
@@ -408,6 +409,13 @@
       text-overflow: ellipsis;
     }
 
+    .player-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
     .status-pill {
       font-size: 0.7rem;
       text-transform: uppercase;
@@ -416,6 +424,17 @@
       border-radius: 999px;
       border: 1px solid;
       white-space: nowrap;
+    }
+
+    .stat-pill {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--accent-alt);
+      background: rgba(15, 23, 42, 0.85);
     }
 
     .status-playing {
@@ -456,163 +475,151 @@
       gap: 6px;
     }
 
-    /* PANEL ROUND */
+    /* PANEL GROUPES */
 
-    .round-meta {
+    .groups-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      font-size: 0.84rem;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 0.86rem;
       color: var(--text-muted);
       position: relative;
       z-index: 1;
-    }
-
-    .round-meta-left {
-      display: flex;
-      gap: 8px;
-      align-items: center;
       flex-wrap: wrap;
     }
 
-    .round-label {
+    .group-count-label {
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      opacity: 0.9;
     }
 
-    .round-number {
-      font-weight: 600;
+    .rotation-summary {
+      margin-bottom: 12px;
+      font-size: 0.8rem;
       color: var(--accent);
-      font-size: 1.2rem;
-      padding: 4px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.25);
-      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.09), rgba(15,23,42,0.98));
-    }
-
-    .round-number.round-pulse {
-      animation: round-pulse 400ms ease-out;
-    }
-
-    @keyframes round-pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 179, 71, 0.45);
-      }
-      60% {
-        transform: scale(1.06);
-        box-shadow: 0 0 0 12px rgba(255, 179, 71, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 179, 71, 0);
-      }
-    }
-
-    .round-layout {
-      display: grid;
-      grid-template-rows: auto auto;
-      gap: 12px;
+      background: rgba(255, 179, 71, 0.12);
+      border: 1px solid rgba(255, 179, 71, 0.25);
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
       position: relative;
       z-index: 1;
     }
 
-    .squad-section,
-    .bench-section {
-      background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.06), rgba(15, 23, 42, 0.98));
-      border-radius: var(--radius-md);
-      padding: 11px 12px 10px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-    }
-
-    .squad-section {
-      box-shadow: 0 0 0 1px rgba(255, 179, 71, 0.35),
-                  0 12px 26px rgba(15, 23, 42, 0.9);
-    }
-
-    .bench-section {
-      border-style: dashed;
-      border-color: rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 100% 0, rgba(148, 163, 184, 0.09), rgba(15, 23, 42, 0.98));
-    }
-
-    .section-title {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
+    .rotation-summary.empty {
+      background: rgba(15, 23, 42, 0.65);
+      border-color: rgba(148, 163, 184, 0.25);
       color: var(--text-muted);
-      margin-bottom: 6px;
+    }
+
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .group-card {
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(30, 41, 59, 0.92)
+      );
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .group-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
+    }
+
+    .group-title {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-alt);
+    }
+
+    .group-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .group-members {
+      display: flex;
+      flex-direction: column;
       gap: 6px;
     }
 
-    .section-title span:first-child {
-      color: #e5e7eb;
+    .group-member {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.25);
     }
 
-    .section-sub {
+    .group-member-name {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .group-member-meta {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+
+    .group-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .group-actions .btn {
+      flex: 1;
+    }
+
+    .group-actions .group-info {
       font-size: 0.72rem;
       color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
-    .squad-list, .bench-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      min-height: 32px;
+    .group-actions .group-info strong {
+      color: var(--accent);
+      font-weight: 600;
     }
 
-    .tag-player {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.75);
-      font-size: 0.8rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tag-player.squad {
-      border-color: rgba(255, 179, 71, 0.95);
-      background: radial-gradient(circle at 0 0, rgba(255, 179, 71, 0.26), rgba(15, 23, 42, 0.98));
-      box-shadow: 0 0 18px rgba(255, 179, 71, 0.4);
-      animation: squad-pop 260ms ease-out;
-    }
-
-    .tag-player.squad::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg,
-        rgba(255, 255, 255, 0.25),
-        transparent 45%,
-        transparent 55%,
-        rgba(255, 255, 255, 0.18)
-      );
-      mix-blend-mode: soft-light;
-      opacity: 0.18;
-      pointer-events: none;
-    }
-
-    @keyframes squad-pop {
-      0% {
-        opacity: 0;
-        transform: translateY(4px) scale(0.95);
-      }
-      60% {
-        opacity: 1;
-        transform: translateY(0) scale(1.04);
-      }
-      100% {
-        transform: translateY(0) scale(1);
-      }
+    .groups-grid .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 24px 12px;
+      border: 1px dashed rgba(148, 163, 184, 0.25);
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.65);
     }
 
     .hint {
@@ -843,49 +850,27 @@
           <div class="sub-chip">Algo équitable</div>
         </div>
 
-        <div class="round-meta">
-          <div class="round-meta-left">
-            <span class="round-label">Round actuel</span>
-            <span class="round-number" id="roundNumber">–</span>
-          </div>
+        <div class="groups-meta">
+          <div class="group-count-label" id="groupCountInfo">0 groupe actif</div>
           <div id="presentCountInfo">0 joueur connecté</div>
         </div>
 
-        <div class="round-layout">
-          <div class="squad-section">
-            <div class="section-title">
-              <span>Escouade déployée</span>
-              <span class="section-sub" id="squadCountInfo">0 / 3 joueurs</span>
-            </div>
-            <div class="squad-list" id="squadList">
-              <span class="empty-state">Clique sur “Nouveau round” pour générer la première escouade.</span>
-            </div>
-            <div class="hint">
-              Priorité aux joueurs qui ont le moins joué, puis à ceux qui attendent depuis le plus longtemps.
-            </div>
-          </div>
+        <div class="rotation-summary empty" id="rotationSummary">En attente de joueurs présents.</div>
 
-          <div class="bench-section">
-            <div class="section-title">
-              <span>Sur le banc</span>
-              <span class="section-sub" id="benchCountInfo">0 joueur</span>
-            </div>
-            <div class="bench-list" id="benchList">
-              <span class="empty-state-quiet">Aucun joueur en attente.</span>
-            </div>
-          </div>
+        <div class="groups-grid" id="groupsGrid">
+          <span class="empty-state">Ajoute des joueurs présents pour générer les groupes.</span>
         </div>
 
         <div class="controls-row">
           <div class="controls-row-left">
-            <button class="btn btn-primary" id="newRoundBtn">Nouveau round</button>
-            <button class="btn btn-secondary" id="shuffleBtn">Randomiser les présents</button>
+            <button class="btn btn-secondary" id="rebalanceBtn">Réorganiser maintenant</button>
+            <button class="btn btn-secondary" id="shuffleBtn">Mixer aléatoirement</button>
           </div>
           <button class="btn btn-danger" id="resetBtn">Réinitialiser la soirée</button>
         </div>
 
         <div class="hint">
-          Utilisation simple : coche seulement les joueurs vraiment connectés, puis “Nouveau round” après chaque raid.
+          Clique sur “Partie terminée” quand ton groupe finit un run : l’app proposera une permutation équitable.
         </div>
         <div class="warning-text" id="warningText"></div>
       </section>
@@ -900,7 +885,7 @@
       <div class="bald-title">PROTOCOLE FOLLICULAIRE</div>
       <div class="bald-emoji">🧑‍🦲</div>
       <div class="bald-text">
-        Ce round met <span>Olive</span> à l’honneur.<br/>
+        Cette rotation met <span>Olive</span> à l’honneur.<br/>
         Gloire aux chauves, que la lumière rebondisse sur leur crâne au cœur du raid.
       </div>
       <div class="bald-sub">
@@ -910,20 +895,51 @@
     </div>
   </div>
 
+
   <script>
-    const STORAGE_KEY = "arc-raiders-squad-rotator-v1";
+    const STORAGE_KEY = "arc-raiders-squad-rotator-v2";
 
     let players = [];
-    let currentRound = 0;
+    let groups = [];
+    let pairStats = {};
+    let lastRotationSummary = "";
     let baldPopupTimeout = null;
 
     function generateId() {
       return Math.random().toString(36).slice(2) + Date.now().toString(36);
     }
 
+    function normalizePlayer(raw) {
+      if (!raw) {
+        return {
+          id: generateId(),
+          name: "Raider",
+          present: true,
+          sessionsPlayed: 0,
+          lastSessionAt: 0,
+          currentGroupId: null,
+          currentGroupName: null,
+        };
+      }
+      return {
+        id: raw.id || generateId(),
+        name: typeof raw.name === "string" ? raw.name : "Raider",
+        present: typeof raw.present === "boolean" ? raw.present : true,
+        sessionsPlayed:
+          typeof raw.sessionsPlayed === "number"
+            ? raw.sessionsPlayed
+            : typeof raw.roundsPlayed === "number"
+            ? raw.roundsPlayed
+            : 0,
+        lastSessionAt: typeof raw.lastSessionAt === "number" ? raw.lastSessionAt : 0,
+        currentGroupId: null,
+        currentGroupName: null,
+      };
+    }
+
     function saveState() {
       try {
-        const state = { players, currentRound };
+        const state = { players, groups, pairStats, lastRotationSummary };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch (e) {
         console.warn("Impossible d’enregistrer l’état :", e);
@@ -935,8 +951,20 @@
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return;
         const state = JSON.parse(raw);
-        players = Array.isArray(state.players) ? state.players : [];
-        currentRound = state.currentRound || 0;
+        players = Array.isArray(state.players) ? state.players.map(normalizePlayer) : [];
+        groups = Array.isArray(state.groups)
+          ? state.groups.map((g) => ({
+              id: g.id || generateId(),
+              name: g.name || "",
+              playerIds: Array.isArray(g.playerIds) ? g.playerIds : [],
+            }))
+          : [];
+        pairStats =
+          state && typeof state.pairStats === "object" && state.pairStats !== null
+            ? state.pairStats
+            : {};
+        lastRotationSummary =
+          typeof state.lastRotationSummary === "string" ? state.lastRotationSummary : "";
       } catch (e) {
         console.warn("Impossible de charger l’état :", e);
       }
@@ -949,31 +977,32 @@
         id: generateId(),
         name: trimmed,
         present: true,
-        status: "bench",
-        roundsPlayed: 0,
-        benchStreak: 0,
+        sessionsPlayed: 0,
+        lastSessionAt: 0,
+        currentGroupId: null,
+        currentGroupName: null,
       });
+      rebuildGroups({ reason: "player-added" });
       saveState();
       render();
     }
 
     function removePlayer(id) {
-      players = players.filter(p => p.id !== id);
+      players = players.filter((p) => p.id !== id);
+      rebuildGroups({ reason: "player-removed" });
       saveState();
       render();
     }
 
     function setPlayerPresent(id, present) {
-      const p = players.find(p => p.id === id);
-      if (!p) return;
-      p.present = present;
+      const player = players.find((p) => p.id === id);
+      if (!player) return;
+      player.present = present;
       if (!present) {
-        p.status = "absent";
-      } else {
-        if (p.status === "absent") {
-          p.status = "bench";
-        }
+        player.currentGroupId = null;
+        player.currentGroupName = null;
       }
+      rebuildGroups({ reason: "presence-change" });
       saveState();
       render();
     }
@@ -987,41 +1016,438 @@
     }
 
     function randomisePresentOrder() {
-      const presentPlayers = players.filter(p => p.present);
-      const absentPlayers = players.filter(p => !p.present);
+      const presentPlayers = players.filter((p) => p.present);
+      const absentPlayers = players.filter((p) => !p.present);
       shuffleArray(presentPlayers);
       players = presentPlayers.concat(absentPlayers);
+      rebuildGroups({ reason: "shuffle" });
       saveState();
       render();
     }
 
-    function animateRoundNumber() {
-      const el = document.getElementById("roundNumber");
-      if (!el) return;
-      el.classList.remove("round-pulse");
-      void el.offsetWidth; // reflow pour relancer l’animation
-      el.classList.add("round-pulse");
+    function formatCount(count, singular, plural, zeroText) {
+      if (count === 0 && typeof zeroText === "string") return zeroText;
+      if (count === 1) return `1 ${singular}`;
+      return `${count} ${plural}`;
     }
 
-    /* --- Easter egg Olive / Olivier --- */
+    function formatSessions(count) {
+      if (count === 1) return "1 partie";
+      return `${count || 0} parties`;
+    }
+
+    function getPairKey(a, b) {
+      return [a, b].sort().join("|");
+    }
+
+    function incrementPairStats(playerIds) {
+      for (let i = 0; i < playerIds.length; i++) {
+        for (let j = i + 1; j < playerIds.length; j++) {
+          const key = getPairKey(playerIds[i], playerIds[j]);
+          pairStats[key] = (pairStats[key] || 0) + 1;
+        }
+      }
+    }
+
+    function computeGroupSizes(count) {
+      if (count <= 3) return [count];
+      const groupCount = Math.ceil(count / 3);
+      const base = Math.floor(count / groupCount);
+      const remainder = count % groupCount;
+      const sizes = Array(groupCount).fill(base);
+      for (let i = 0; i < remainder; i++) {
+        sizes[i] += 1;
+      }
+      return sizes.sort((a, b) => b - a);
+    }
+
+    function generateCombinations(source, size) {
+      if (size <= 0) return [[]];
+      const result = [];
+      function helper(start, combo) {
+        if (combo.length === size) {
+          result.push(combo.slice());
+          return;
+        }
+        for (let i = start; i < source.length; i++) {
+          combo.push(source[i]);
+          helper(i + 1, combo);
+          combo.pop();
+        }
+      }
+      helper(0, []);
+      return result;
+    }
+
+    function pickBestCombo(
+      pool,
+      size,
+      prevGroupByPlayer,
+      completedGroupId,
+      completedSet,
+      previousSignatureMap
+    ) {
+      if (pool.length === size) return pool.slice();
+      const combos = generateCombinations(pool, size);
+      if (combos.length === 0) return pool.slice(0, size);
+      let bestCombo = combos[0];
+      let bestScore = Infinity;
+      for (const combo of combos) {
+        const score = evaluateCombo(
+          combo,
+          prevGroupByPlayer,
+          completedGroupId,
+          completedSet,
+          previousSignatureMap
+        );
+        if (score < bestScore - 1e-9) {
+          bestScore = score;
+          bestCombo = combo;
+        }
+      }
+      return bestCombo;
+    }
+
+    function evaluateCombo(
+      combo,
+      prevGroupByPlayer,
+      completedGroupId,
+      completedSet,
+      previousSignatureMap
+    ) {
+      const ids = combo.map((p) => p.id);
+      const sortedIds = [...ids].sort();
+      const signature = sortedIds.join("|");
+      let score = 0;
+
+      for (let i = 0; i < sortedIds.length; i++) {
+        for (let j = i + 1; j < sortedIds.length; j++) {
+          const key = getPairKey(sortedIds[i], sortedIds[j]);
+          score += (pairStats[key] || 0) * 8;
+        }
+      }
+
+      const sessionsSum = combo.reduce((sum, p) => sum + (p.sessionsPlayed || 0), 0);
+      score += sessionsSum * 0.6;
+
+      const recencySum = combo.reduce((sum, p) => sum + (p.lastSessionAt || 0), 0);
+      score += recencySum / 1000000;
+
+      const previousGroupForSignature = previousSignatureMap[signature];
+      if (previousGroupForSignature && previousGroupForSignature !== completedGroupId) {
+        score -= 4;
+      }
+      if (previousGroupForSignature === completedGroupId && combo.length > 1) {
+        score += 80;
+      }
+
+      const countsByGroup = {};
+      combo.forEach((p) => {
+        const gid = prevGroupByPlayer[p.id];
+        if (gid) {
+          countsByGroup[gid] = (countsByGroup[gid] || 0) + 1;
+        }
+      });
+      Object.entries(countsByGroup).forEach(([gid, count]) => {
+        if (count > 1) {
+          score += count * 6;
+          if (gid === completedGroupId) {
+            score += count * 12;
+          }
+        }
+      });
+
+      let completedCount = 0;
+      combo.forEach((p) => {
+        if (completedSet.has(p.id)) completedCount += 1;
+      });
+      if (completedCount === combo.length && combo.length > 1) {
+        score += 120;
+      } else if (completedCount > 1) {
+        score += completedCount * 18;
+      }
+
+      score += Math.random() * 0.01;
+      return score;
+    }
+
+    function buildGroups(presentPlayers, previousGroups, completedGroupId) {
+      const prevGroupByPlayer = {};
+      const previousSignatureMap = {};
+      previousGroups.forEach((g) => {
+        if (!Array.isArray(g.playerIds)) return;
+        const signature = g.playerIds.slice().sort().join("|");
+        previousSignatureMap[signature] = g.id;
+        g.playerIds.forEach((pid) => {
+          prevGroupByPlayer[pid] = g.id;
+        });
+      });
+
+      const completedSet = new Set();
+      if (completedGroupId) {
+        const completedGroup = previousGroups.find((g) => g.id === completedGroupId);
+        if (completedGroup && Array.isArray(completedGroup.playerIds)) {
+          completedGroup.playerIds.forEach((pid) => completedSet.add(pid));
+        }
+      }
+
+      const sizes = computeGroupSizes(presentPlayers.length);
+      const sortedPool = [...presentPlayers].sort((a, b) => {
+        if ((a.sessionsPlayed || 0) !== (b.sessionsPlayed || 0)) {
+          return (a.sessionsPlayed || 0) - (b.sessionsPlayed || 0);
+        }
+        const lastA = a.lastSessionAt || 0;
+        const lastB = b.lastSessionAt || 0;
+        if (lastA !== lastB) {
+          return lastA - lastB;
+        }
+        return a.name.localeCompare(b.name);
+      });
+
+      let remaining = [...sortedPool];
+      const newGroups = [];
+
+      sizes.forEach((size) => {
+        let combo = pickBestCombo(
+          remaining,
+          size,
+          prevGroupByPlayer,
+          completedGroupId,
+          completedSet,
+          previousSignatureMap
+        );
+        if (!combo || combo.length !== size) {
+          combo = remaining.slice(0, size);
+        }
+        newGroups.push({
+          id: generateId(),
+          playerIds: combo.map((p) => p.id),
+        });
+        const comboIds = new Set(combo.map((p) => p.id));
+        remaining = remaining.filter((p) => !comboIds.has(p.id));
+      });
+
+      return newGroups;
+    }
+
+    function computeMovedPlayers(oldGroups, newGroups) {
+      const oldMap = {};
+      oldGroups.forEach((g) => {
+        if (!Array.isArray(g.playerIds)) return;
+        const signature = g.playerIds.slice().sort().join("|");
+        g.playerIds.forEach((pid) => {
+          oldMap[pid] = signature;
+        });
+      });
+      const newMap = {};
+      newGroups.forEach((g) => {
+        if (!Array.isArray(g.playerIds)) return;
+        const signature = g.playerIds.slice().sort().join("|");
+        g.playerIds.forEach((pid) => {
+          newMap[pid] = signature;
+        });
+      });
+      let moved = 0;
+      Object.keys(oldMap).forEach((pid) => {
+        if (
+          Object.prototype.hasOwnProperty.call(newMap, pid) &&
+          newMap[pid] !== oldMap[pid]
+        ) {
+          moved += 1;
+        }
+      });
+      return moved;
+    }
+
+    function computeRotationSummary(
+      oldGroups,
+      newGroups,
+      completedGroupId,
+      presentCount,
+      reason
+    ) {
+      if (presentCount === 0) {
+        return "En attente de joueurs présents.";
+      }
+      if (!oldGroups.length) {
+        if (reason === "reset") {
+          return "Statistiques remises à zéro : nouvelles compositions.";
+        }
+        if (reason === "load") {
+          return lastRotationSummary || "Groupes initialisés.";
+        }
+        return "Groupes initialisés.";
+      }
+
+      const movedPlayers = computeMovedPlayers(oldGroups, newGroups);
+      const plural = movedPlayers > 1 ? "s" : "";
+
+      switch (reason) {
+        case "presence-change":
+          return movedPlayers === 0
+            ? "Présence mise à jour, compositions identiques."
+            : `Présence mise à jour : ${movedPlayers} joueur${plural} déplacé${plural}.`;
+        case "player-added":
+          return `Nouveau Raider : recomposition (${movedPlayers} déplacement${plural}).`;
+        case "player-removed":
+          return `Joueur retiré : recomposition (${movedPlayers} déplacement${plural}).`;
+        case "shuffle":
+          return "Groupes mélangés aléatoirement.";
+        case "manual":
+          return movedPlayers === 0
+            ? "Rééquilibrage : aucune modification nécessaire."
+            : `Rééquilibrage : ${movedPlayers} joueur${plural} déplacé${plural}.`;
+        case "reset":
+          return "Statistiques remises à zéro : nouvelles compositions.";
+        case "load":
+          return lastRotationSummary || "Groupes chargés.";
+        default:
+          break;
+      }
+
+      if (completedGroupId) {
+        const oldGroup = oldGroups.find((g) => g.id === completedGroupId);
+        if (oldGroup) {
+          const destinations = new Set();
+          oldGroup.playerIds.forEach((pid) => {
+            const target = newGroups.find((g) => g.playerIds.includes(pid));
+            if (target) destinations.add(target.name);
+          });
+          const list = Array.from(destinations);
+          if (list.length === 1 && list[0] === (oldGroup.name || list[0])) {
+            return "Aucune permutation : groupe conservé.";
+          }
+          if (list.length === 0) {
+            return "Groupe dissous.";
+          }
+          return `Permutation avec ${list.join(" · ")} (${movedPlayers} déplacement${plural}).`;
+        }
+      }
+
+      return movedPlayers === 0
+        ? "Compositions inchangées."
+        : `${movedPlayers} joueur${plural} ont changé de groupe.`;
+    }
+
+    function rebuildGroups(options = {}) {
+      const { completedGroupId = null, reason = "auto", updateSummary = true } = options;
+      const presentPlayers = players.filter((p) => p.present);
+      const previousGroups = groups.map((g) => ({
+        id: g.id,
+        name: g.name,
+        playerIds: Array.isArray(g.playerIds) ? [...g.playerIds] : [],
+      }));
+
+      if (presentPlayers.length === 0) {
+        groups = [];
+        players.forEach((p) => {
+          p.currentGroupId = null;
+          p.currentGroupName = null;
+        });
+        if (updateSummary) {
+          lastRotationSummary =
+            reason === "reset"
+              ? "Statistiques remises à zéro."
+              : "En attente de joueurs présents.";
+        }
+        return { changed: previousGroups.length > 0, summary: lastRotationSummary };
+      }
+
+      const newRawGroups = buildGroups(presentPlayers, previousGroups, completedGroupId);
+      const newGroups = newRawGroups.map((group, index) => ({
+        id: group.id,
+        name: `Groupe ${index + 1}`,
+        playerIds: group.playerIds,
+      }));
+      groups = newGroups;
+
+      const groupIdByPlayer = {};
+      const groupNameByPlayer = {};
+      groups.forEach((g) => {
+        g.playerIds.forEach((pid) => {
+          groupIdByPlayer[pid] = g.id;
+          groupNameByPlayer[pid] = g.name;
+        });
+      });
+
+      players.forEach((p) => {
+        if (!p.present) {
+          p.currentGroupId = null;
+          p.currentGroupName = null;
+        } else {
+          p.currentGroupId = groupIdByPlayer[p.id] || null;
+          p.currentGroupName = groupNameByPlayer[p.id] || null;
+        }
+      });
+
+      const changed =
+        JSON.stringify(
+          previousGroups.map((g) => g.playerIds.slice().sort().join("|"))
+        ) !==
+        JSON.stringify(groups.map((g) => g.playerIds.slice().sort().join("|")));
+
+      if (updateSummary) {
+        lastRotationSummary = computeRotationSummary(
+          previousGroups,
+          groups,
+          completedGroupId,
+          presentPlayers.length,
+          reason
+        );
+      }
+
+      return { changed, summary: lastRotationSummary };
+    }
+
+    function completeGroup(groupId) {
+      const group = groups.find((g) => g.id === groupId);
+      if (!group) return;
+      const groupPlayers = group.playerIds
+        .map((pid) => players.find((p) => p.id === pid))
+        .filter(Boolean);
+      if (groupPlayers.length === 0) return;
+
+      const now = Date.now();
+      groupPlayers.forEach((p) => {
+        p.sessionsPlayed = (p.sessionsPlayed || 0) + 1;
+        p.lastSessionAt = now;
+      });
+
+      incrementPairStats(group.playerIds);
+
+      rebuildGroups({ completedGroupId: groupId, reason: "rotation" });
+      saveState();
+      render();
+      handleBaldEasterEgg(groupPlayers);
+    }
+
+    function resetSession() {
+      players.forEach((p) => {
+        p.sessionsPlayed = 0;
+        p.lastSessionAt = 0;
+      });
+      pairStats = {};
+      lastRotationSummary = "";
+      groups = [];
+      rebuildGroups({ reason: "reset" });
+      saveState();
+      render();
+    }
 
     function isOliveName(name) {
       const n = name.trim().toLowerCase();
-      // "Olive", "Olivier", "Olive X", etc.
       return n === "olive" || n === "olivier" || n.startsWith("olive ");
     }
 
-    function triggerBaldPopup(squadPlayers) {
+    function triggerBaldPopup(groupPlayers) {
       const popup = document.getElementById("baldPopup");
       const textEl = popup.querySelector(".bald-text");
-      const oliveNames = squadPlayers
-        .map(p => p.name)
-        .filter(n => isOliveName(n));
+      const oliveNames = groupPlayers.map((p) => p.name).filter((n) => isOliveName(n));
 
       if (oliveNames.length > 0) {
         const first = oliveNames[0];
         textEl.innerHTML =
-          `Ce round met <span>${first}</span> à l’honneur.<br/>` +
+          `Cette rotation met <span>${first}</span> à l’honneur.<br/>` +
           `Gloire aux chauves, que la lumière rebondisse sur leur crâne au cœur du raid.`;
       }
 
@@ -1044,14 +1470,7 @@
       const container = document.getElementById("confettiContainer");
       container.innerHTML = "";
 
-      const colors = [
-        "#ffb347",
-        "#ff6b3d",
-        "#f97316",
-        "#34d1ff",
-        "#facc15",
-        "#e5e7eb"
-      ];
+      const colors = ["#ffb347", "#ff6b3d", "#f97316", "#34d1ff", "#facc15", "#e5e7eb"];
 
       const total = 120;
       for (let i = 0; i < total; i++) {
@@ -1061,7 +1480,7 @@
         const delay = Math.random() * 0.4;
         const duration = 2.2 + Math.random() * 1.2;
         const color = colors[Math.floor(Math.random() * colors.length)];
-        const rotate = (Math.random() * 360) + "deg";
+        const rotate = Math.random() * 360 + "deg";
 
         piece.style.left = left + "vw";
         piece.style.backgroundColor = color;
@@ -1077,90 +1496,27 @@
       }, 5000);
     }
 
-    function handleBaldEasterEgg(squadPlayers) {
-      const hasOlive = squadPlayers.some(p => isOliveName(p.name));
+    function handleBaldEasterEgg(groupPlayers) {
+      const hasOlive = groupPlayers.some((p) => isOliveName(p.name));
       if (!hasOlive) return;
       createConfettiBurst();
-      triggerBaldPopup(squadPlayers);
-    }
-
-    /* --- Logique de rotation --- */
-
-    function newRound() {
-      const presentPlayers = players.filter(p => p.present);
-      const warningEl = document.getElementById("warningText");
-
-      if (presentPlayers.length < 3) {
-        warningEl.textContent = "Il faut au moins 3 joueurs présents pour lancer un round.";
-        return;
-      } else {
-        warningEl.textContent = "";
-      }
-
-      // Tri pour équité : moins de rounds joués, puis plus longue attente
-      const sorted = [...presentPlayers].sort((a, b) => {
-        if (a.roundsPlayed !== b.roundsPlayed) {
-          return a.roundsPlayed - b.roundsPlayed;
-        }
-        if (a.benchStreak !== b.benchStreak) {
-          return b.benchStreak - a.benchStreak;
-        }
-        return a.name.localeCompare(b.name);
-      });
-
-      const squadIds = new Set(sorted.slice(0, 3).map(p => p.id));
-
-      players.forEach(p => {
-        if (!p.present) {
-          p.status = "absent";
-          return;
-        }
-        if (squadIds.has(p.id)) {
-          p.status = "playing";
-          p.roundsPlayed = (p.roundsPlayed || 0) + 1;
-          p.benchStreak = 0;
-        } else {
-          p.status = "bench";
-          p.benchStreak = (p.benchStreak || 0) + 1;
-        }
-      });
-
-      currentRound += 1;
-      saveState();
-      render();
-      animateRoundNumber();
-
-      // Easter egg
-      const squadPlayers = players.filter(p => p.present && squadIds.has(p.id));
-      handleBaldEasterEgg(squadPlayers);
-    }
-
-    function resetSession() {
-      players.forEach(p => {
-        p.status = p.present ? "bench" : "absent";
-        p.roundsPlayed = 0;
-        p.benchStreak = 0;
-      });
-      currentRound = 0;
-      saveState();
-      render();
+      triggerBaldPopup(groupPlayers);
     }
 
     function render() {
       const playersList = document.getElementById("playersList");
-      const roundNumberEl = document.getElementById("roundNumber");
       const presentCountInfo = document.getElementById("presentCountInfo");
-      const squadList = document.getElementById("squadList");
-      const benchList = document.getElementById("benchList");
-      const squadCountInfo = document.getElementById("squadCountInfo");
-      const benchCountInfo = document.getElementById("benchCountInfo");
+      const groupCountInfo = document.getElementById("groupCountInfo");
+      const groupsGrid = document.getElementById("groupsGrid");
+      const rotationSummaryEl = document.getElementById("rotationSummary");
+      const warningEl = document.getElementById("warningText");
 
       playersList.innerHTML = "";
-
       if (players.length === 0) {
-        playersList.innerHTML = '<div class="empty-state">Ajoute vos pseudos pour commencer.</div>';
+        playersList.innerHTML =
+          '<div class="empty-state">Ajoute vos pseudos pour commencer.</div>';
       } else {
-        players.forEach(p => {
+        players.forEach((p) => {
           const card = document.createElement("div");
           card.className = "player-card";
 
@@ -1171,21 +1527,30 @@
           nameEl.className = "player-name";
           nameEl.textContent = p.name;
 
+          const meta = document.createElement("div");
+          meta.className = "player-meta";
+
           const status = document.createElement("div");
           status.className = "status-pill";
-          if (p.status === "playing") {
-            status.classList.add("status-playing");
-            status.textContent = "En raid";
-          } else if (p.status === "bench") {
-            status.classList.add("status-bench");
-            status.textContent = "En attente";
-          } else {
+          if (!p.present) {
             status.classList.add("status-absent");
             status.textContent = "Absent";
+          } else {
+            status.classList.add("status-playing");
+            status.textContent = p.currentGroupName
+              ? p.currentGroupName
+              : "Assignation en cours";
           }
 
+          const stat = document.createElement("div");
+          stat.className = "stat-pill";
+          stat.textContent = formatSessions(p.sessionsPlayed || 0);
+
+          meta.appendChild(status);
+          meta.appendChild(stat);
+
           main.appendChild(nameEl);
-          main.appendChild(status);
+          main.appendChild(meta);
 
           const actions = document.createElement("div");
           actions.className = "player-actions";
@@ -1227,62 +1592,122 @@
         });
       }
 
-      const presentCount = players.filter(p => p.present).length;
-      presentCountInfo.textContent =
-        presentCount === 0
-          ? "Aucun joueur connecté"
-          : presentCount === 1
-          ? "1 joueur connecté"
-          : `${presentCount} joueurs connectés`;
+      const presentCount = players.filter((p) => p.present).length;
+      presentCountInfo.textContent = formatCount(
+        presentCount,
+        "joueur connecté",
+        "joueurs connectés",
+        "0 joueur connecté"
+      );
 
-      roundNumberEl.textContent = currentRound === 0 ? "–" : currentRound.toString();
+      const activeGroups = groups.length;
+      groupCountInfo.textContent = formatCount(
+        activeGroups,
+        "groupe actif",
+        "groupes actifs",
+        "0 groupe actif"
+      );
 
-      const squadPlayers = players.filter(p => p.present && p.status === "playing");
-      const benchPlayers = players.filter(p => p.present && p.status === "bench");
-
-      squadList.innerHTML = "";
-      benchList.innerHTML = "";
-
-      if (squadPlayers.length === 0) {
-        squadList.innerHTML =
-          '<span class="empty-state">Clique sur “Nouveau round” pour générer la première escouade.</span>';
+      groupsGrid.innerHTML = "";
+      if (activeGroups === 0) {
+        groupsGrid.innerHTML =
+          '<span class="empty-state">Ajoute des joueurs présents pour générer les groupes.</span>';
       } else {
-        squadPlayers.forEach(p => {
-          const tag = document.createElement("div");
-          tag.className = "tag-player squad";
-          tag.textContent = p.name;
-          squadList.appendChild(tag);
+        groups.forEach((group) => {
+          const card = document.createElement("div");
+          card.className = "group-card";
+
+          const header = document.createElement("div");
+          header.className = "group-header";
+
+          const title = document.createElement("div");
+          title.className = "group-title";
+          title.textContent = group.name;
+
+          const meta = document.createElement("div");
+          meta.className = "group-meta";
+          meta.textContent = formatCount(
+            group.playerIds.length,
+            "joueur",
+            "joueurs",
+            "0 joueur"
+          );
+
+          header.appendChild(title);
+          header.appendChild(meta);
+
+          const members = document.createElement("div");
+          members.className = "group-members";
+
+          group.playerIds.forEach((pid) => {
+            const player = players.find((p) => p.id === pid);
+            if (!player) return;
+            const member = document.createElement("div");
+            member.className = "group-member";
+
+            const memberName = document.createElement("div");
+            memberName.className = "group-member-name";
+            memberName.textContent = player.name;
+
+            const memberMeta = document.createElement("div");
+            memberMeta.className = "group-member-meta";
+            memberMeta.textContent = formatSessions(player.sessionsPlayed || 0);
+
+            member.appendChild(memberName);
+            member.appendChild(memberMeta);
+            members.appendChild(member);
+          });
+
+          const actions = document.createElement("div");
+          actions.className = "group-actions";
+
+          const completeBtn = document.createElement("button");
+          completeBtn.className = "btn btn-primary";
+          completeBtn.textContent = "Partie terminée";
+          completeBtn.disabled = group.playerIds.length === 0;
+          completeBtn.addEventListener("click", () => completeGroup(group.id));
+
+          const info = document.createElement("div");
+          info.className = "group-info";
+          info.innerHTML = "<strong>Mix</strong> organique";
+
+          actions.appendChild(completeBtn);
+          actions.appendChild(info);
+
+          card.appendChild(header);
+          card.appendChild(members);
+          card.appendChild(actions);
+
+          groupsGrid.appendChild(card);
         });
       }
 
-      if (benchPlayers.length === 0) {
-        benchList.innerHTML =
-          '<span class="empty-state-quiet">Aucun joueur en attente.</span>';
+      if (lastRotationSummary) {
+        rotationSummaryEl.textContent = lastRotationSummary;
+        rotationSummaryEl.classList.toggle("empty", groups.length === 0);
       } else {
-        benchPlayers.forEach(p => {
-          const tag = document.createElement("div");
-          tag.className = "tag-player";
-          tag.textContent = p.name;
-          benchList.appendChild(tag);
-        });
+        rotationSummaryEl.textContent = "En attente de joueurs présents.";
+        rotationSummaryEl.classList.add("empty");
       }
 
-      squadCountInfo.textContent = `${squadPlayers.length} / 3 joueurs`;
-      benchCountInfo.textContent =
-        benchPlayers.length === 0
-          ? "0 joueur"
-          : benchPlayers.length === 1
-          ? "1 joueur"
-          : `${benchPlayers.length} joueurs`;
+      if (presentCount === 0) {
+        warningEl.textContent = "Aucun Raider n’est marqué présent.";
+        warningEl.style.display = "flex";
+      } else {
+        warningEl.textContent = "";
+        warningEl.style.display = "none";
+      }
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       loadState();
+      players = players.map(normalizePlayer);
+      rebuildGroups({ reason: "load", updateSummary: false });
       render();
 
       const addForm = document.getElementById("addPlayerForm");
       const nameInput = document.getElementById("playerNameInput");
-      const newRoundBtn = document.getElementById("newRoundBtn");
+      const rebalanceBtn = document.getElementById("rebalanceBtn");
       const resetBtn = document.getElementById("resetBtn");
       const shuffleBtn = document.getElementById("shuffleBtn");
       const baldPopup = document.getElementById("baldPopup");
@@ -1298,12 +1723,14 @@
         }
       });
 
-      newRoundBtn.addEventListener("click", () => {
-        newRound();
+      rebalanceBtn.addEventListener("click", () => {
+        rebuildGroups({ reason: "manual" });
+        saveState();
+        render();
       });
 
       resetBtn.addEventListener("click", () => {
-        if (confirm("Réinitialiser la soirée ? (rotation remise à zéro)")) {
+        if (confirm("Réinitialiser la soirée ? (stats et rotation remises à zéro)")) {
           resetSession();
         }
       });
@@ -1323,5 +1750,6 @@
       });
     });
   </script>
+
 </body>
   </html>
