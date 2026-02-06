@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#111111" />
+  <title>Compagnon Aikishintaiso</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">合</span>
+      <div>
+        <h1>Compagnon Aikishintaiso</h1>
+        <p class="subtitle">Application hors-ligne sobre pour structurer des séances.</p>
+      </div>
+    </div>
+    <nav class="top-nav" aria-label="Navigation principale">
+      <a href="#/home">Accueil</a>
+      <a href="#/builder">Construire</a>
+      <a href="#/library">Bibliothèque</a>
+      <a href="#/journal">Journal</a>
+      <a href="#/help">Aide</a>
+      <a href="#/settings">Paramètres</a>
+    </nav>
+  </header>
+
+  <main id="main" class="app-main" tabindex="-1">
+    <section id="view-onboarding" class="view" aria-labelledby="onboarding-title">
+      <h2 id="onboarding-title">Bienvenue</h2>
+      <div class="card warning">
+        <h3>Avant de commencer</h3>
+        <p><strong>Cette application ne remplace pas un enseignant, n’est pas un dispositif médical, ne diagnostique rien.</strong></p>
+        <p>En cas de douleur vive ou de problème de santé, arrêter et consulter.</p>
+        <p>Les questions et notes sont réservées <strong>après</strong> la pratique.</p>
+      </div>
+      <form id="onboarding-form" class="card">
+        <fieldset>
+          <legend>Choisir le mode</legend>
+          <label><input type="radio" name="mode" value="autonome" checked /> Mode autonome (séances compatibles sans validation)</label>
+          <label><input type="radio" name="mode" value="teacher" /> Mode encadré (validation enseignant)</label>
+        </fieldset>
+        <label class="checkbox">
+          <input type="checkbox" id="consent-checkbox" required />
+          Je reconnais avoir lu et compris le cadre et les limites de cette application.
+        </label>
+        <button class="primary" type="submit">Continuer</button>
+      </form>
+    </section>
+
+    <section id="view-home" class="view" aria-labelledby="home-title">
+      <h2 id="home-title">Accueil</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Démarrer</h3>
+          <p>Choisissez une séance prête à l’emploi ou reprenez la dernière.</p>
+          <button class="primary" id="start-session-btn">Démarrer une séance</button>
+        </div>
+        <div class="card">
+          <h3>Dernière séance</h3>
+          <div id="last-session" class="muted">Aucune séance enregistrée.</div>
+        </div>
+      </div>
+      <div class="quick-links">
+        <a class="card" href="#/builder">Construire une séance</a>
+        <a class="card" href="#/library">Bibliothèque</a>
+        <a class="card" href="#/journal">Journal</a>
+        <a class="card" href="#/help">Aide & Glossaire</a>
+      </div>
+      <div class="card">
+        <h3>Templates disponibles</h3>
+        <div id="template-list" class="card-list"></div>
+      </div>
+    </section>
+
+    <section id="view-builder" class="view" aria-labelledby="builder-title">
+      <h2 id="builder-title">Constructeur de séance</h2>
+      <div class="card">
+        <h3>Nouveau template</h3>
+        <form id="builder-form" class="grid-2">
+          <label>Intention
+            <input type="text" name="intent" placeholder="Ex: trouver un axe stable dans le mouvement" required />
+          </label>
+          <label>Titre
+            <input type="text" name="title" placeholder="Ex: Axe & calme" required />
+          </label>
+          <label>Durée
+            <select name="duration">
+              <option value="2700">45 min</option>
+              <option value="3600" selected>60 min</option>
+              <option value="5400">90 min</option>
+            </select>
+          </label>
+          <label>Thématique
+            <select name="theme">
+              <option value="mobilite">Mobilité / Fixité</option>
+              <option value="circulation">Circulation / Stagnation</option>
+              <option value="interne">Interne / Externe</option>
+              <option value="saturation">Saturation / Carence</option>
+            </select>
+          </label>
+        </form>
+        <button class="primary" id="generate-template-btn">Générer un squelette</button>
+      </div>
+      <div class="card">
+        <h3>Structure</h3>
+        <div id="builder-warning" class="warning hidden"></div>
+        <div id="builder-blocks" class="builder-blocks"></div>
+        <div class="builder-actions">
+          <button id="save-template-btn" class="primary">Sauvegarder le template</button>
+          <button id="reset-template-btn">Réinitialiser</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-dojo" class="view" aria-labelledby="dojo-title">
+      <h2 id="dojo-title">Mode séance</h2>
+      <div class="card dojo-card">
+        <div class="dojo-header">
+          <div>
+            <h3 id="dojo-session-title">Séance</h3>
+            <p id="dojo-intent" class="muted"></p>
+          </div>
+          <div class="dojo-phase" id="dojo-phase">Phase</div>
+        </div>
+        <div class="dojo-timer" id="dojo-timer">00:00</div>
+        <div class="dojo-instruction" id="dojo-instruction">Préparation...</div>
+        <div class="dojo-controls">
+          <button id="dojo-prev">Précédent</button>
+          <button id="dojo-toggle" class="primary">Démarrer</button>
+          <button id="dojo-next">Suivant</button>
+          <button id="dojo-fullscreen">Plein écran</button>
+        </div>
+        <div class="dojo-meta">
+          <span id="dojo-remaining">Temps restant: --</span>
+          <button id="dojo-notes" disabled>Notes (après la pratique)</button>
+        </div>
+      </div>
+      <div class="card hidden" id="dojo-complete">
+        <h3>Fermeture stable</h3>
+        <p>Prenez quelques instants pour revenir à un état stable avant de passer aux notes.</p>
+        <button class="primary" id="open-journal-entry">Aller au journal</button>
+      </div>
+    </section>
+
+    <section id="view-library" class="view" aria-labelledby="library-title">
+      <h2 id="library-title">Bibliothèque</h2>
+      <div class="card">
+        <form id="library-filters" class="grid-3">
+          <label>Recherche
+            <input type="search" name="query" placeholder="mot-clé" />
+          </label>
+          <label>Type
+            <select name="type">
+              <option value="">Tous</option>
+              <option value="rituel">Rituel</option>
+              <option value="kihon">Kihon</option>
+              <option value="posture">Posture</option>
+              <option value="marche">Marche</option>
+              <option value="meditation">Méditation</option>
+            </select>
+          </label>
+          <label>Niveau
+            <select name="level">
+              <option value="">Tous</option>
+              <option value="debutant">Débutant</option>
+              <option value="intermediaire">Intermédiaire</option>
+              <option value="avance">Avancé</option>
+            </select>
+          </label>
+        </form>
+      </div>
+      <div id="library-list" class="card-list"></div>
+      <div class="card">
+        <h3>Créer / éditer</h3>
+        <form id="library-form" class="grid-2">
+          <input type="hidden" name="id" />
+          <label>Titre
+            <input type="text" name="title" required />
+          </label>
+          <label>Type
+            <select name="type" required>
+              <option value="rituel">Rituel</option>
+              <option value="kihon">Kihon</option>
+              <option value="posture">Posture</option>
+              <option value="marche">Marche</option>
+              <option value="meditation">Méditation</option>
+            </select>
+          </label>
+          <label>Durée par défaut (sec)
+            <input type="number" name="durationDefaultSec" min="30" step="30" required />
+          </label>
+          <label>Niveau
+            <select name="level">
+              <option value="debutant">Débutant</option>
+              <option value="intermediaire">Intermédiaire</option>
+              <option value="avance">Avancé</option>
+            </select>
+          </label>
+          <label>Tags (séparés par des virgules)
+            <input type="text" name="tags" />
+          </label>
+          <label>Autonome
+            <select name="autonome">
+              <option value="true">Oui</option>
+              <option value="false">Non</option>
+            </select>
+          </label>
+          <label>Description
+            <textarea name="description" rows="3" required></textarea>
+          </label>
+          <label>Instructions
+            <textarea name="instructions" rows="3" required></textarea>
+          </label>
+          <label>Notes de sécurité (séparées par ; )
+            <input type="text" name="safetyNotes" />
+          </label>
+        </form>
+        <div class="builder-actions">
+          <button id="save-item-btn" class="primary">Enregistrer</button>
+          <button id="reset-item-btn">Réinitialiser</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-journal" class="view" aria-labelledby="journal-title">
+      <h2 id="journal-title">Journal</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Nouvelle entrée</h3>
+          <form id="journal-form" class="grid-2">
+            <label>Ressenti
+              <input type="number" name="ressenti" min="1" max="5" required />
+            </label>
+            <label>Fatigue
+              <input type="number" name="fatigue" min="1" max="5" required />
+            </label>
+            <label>Calme
+              <input type="number" name="calme" min="1" max="5" required />
+            </label>
+            <label>Mobilité
+              <input type="number" name="mobilite" min="1" max="5" required />
+            </label>
+            <label class="full">Notes
+              <textarea name="notes" rows="4"></textarea>
+            </label>
+            <label class="full">Tags (séparés par des virgules)
+              <input type="text" name="tags" />
+            </label>
+          </form>
+          <button id="save-journal-btn" class="primary">Enregistrer</button>
+        </div>
+        <div class="card">
+          <h3>Statistiques simples</h3>
+          <canvas id="stats-canvas" width="320" height="240" aria-label="Statistiques"></canvas>
+          <p class="muted">Aucune interprétation médicale. Moyennes des auto-évaluations.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Historique</h3>
+        <div id="journal-list" class="card-list"></div>
+      </div>
+    </section>
+
+    <section id="view-help" class="view" aria-labelledby="help-title">
+      <h2 id="help-title">Aide & Glossaire</h2>
+      <div class="card">
+        <h3>Cadre & sécurité</h3>
+        <ul>
+          <li>Cette application ne remplace pas un enseignant, n’est pas un dispositif médical, ne diagnostique rien.</li>
+          <li>En cas de douleur vive ou de problème de santé, arrêter et consulter.</li>
+          <li>Silence pendant la pratique ; questions et notes après la séance.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Glossaire</h3>
+        <dl class="glossary">
+          <dt>Misogi</dt>
+          <dd>Entrée de séance : souffle, attention, disponibilité.</dd>
+          <dt>Kihon</dt>
+          <dd>Référence/fondation neutre, sans contenu technique réservé.</dd>
+          <dt>Programme</dt>
+          <dd>Combinaison structurée en trois phases : mise en place, mise à l’épreuve, intégration.</dd>
+          <dt>Retour stable</dt>
+          <dd>Sortie progressive pour retrouver un équilibre stable.</dd>
+          <dt>Discussion</dt>
+          <dd>Notes et échanges uniquement après la pratique.</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <h3>Export / Import</h3>
+        <div class="builder-actions">
+          <button id="export-data" class="primary">Exporter les données</button>
+          <label class="file-input">Importer un JSON
+            <input type="file" id="import-data" accept="application/json" />
+          </label>
+          <button id="reset-data" class="danger">Réinitialiser</button>
+        </div>
+        <pre id="export-output" class="code-block" aria-live="polite"></pre>
+      </div>
+    </section>
+
+    <section id="view-settings" class="view" aria-labelledby="settings-title">
+      <h2 id="settings-title">Paramètres</h2>
+      <div class="card grid-2">
+        <label>Thème
+          <select id="setting-theme">
+            <option value="system">Système</option>
+            <option value="light">Clair</option>
+            <option value="dark">Sombre</option>
+          </select>
+        </label>
+        <label>Taille de police
+          <input type="range" id="setting-font" min="90" max="120" step="5" />
+        </label>
+        <label>Mode enseignant
+          <select id="setting-teacher-mode">
+            <option value="false">Désactivé</option>
+            <option value="true">Activé</option>
+          </select>
+        </label>
+        <label>Clé de validation (facultatif)
+          <input type="text" id="setting-teacher-key" placeholder="clé simple" />
+        </label>
+        <label>Notifications (si support)
+          <select id="setting-notifications">
+            <option value="false">Désactivées</option>
+            <option value="true">Activées</option>
+          </select>
+        </label>
+      </div>
+      <div class="card">
+        <h3>JSON courant (debug)</h3>
+        <pre id="debug-json" class="code-block"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Compagnon Aikishintaiso — usage personnel, hors-ligne, sans suivi externe.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+{
+  "contentItems": [
+    {
+      "id": "misogi-breath-1",
+      "type": "rituel",
+      "title": "Misogi souffle calme",
+      "description": "Entrée simple pour stabiliser l'attention sans forcer.",
+      "instructions": "Respiration régulière, observation du souffle sans contrôle.",
+      "durationDefaultSec": 300,
+      "level": "debutant",
+      "tags": ["souffle", "attention"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Rester confortable", "Arrêter si gêne"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "misogi-attention-2",
+      "type": "rituel",
+      "title": "Misogi attention stable",
+      "description": "Entrée sobre centrée sur l'écoute du corps.",
+      "instructions": "Balayer l'attention du haut vers le bas, sans jugement.",
+      "durationDefaultSec": 240,
+      "level": "debutant",
+      "tags": ["attention"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Rester neutre", "Pas d'interprétation"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "misogi-posture-3",
+      "type": "rituel",
+      "title": "Misogi posture debout",
+      "description": "Entrée par une posture stable et simple.",
+      "instructions": "Pieds ancrés, axe long, respiration douce.",
+      "durationDefaultSec": 300,
+      "level": "debutant",
+      "tags": ["axe", "stabilite"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Ne pas verrouiller", "Relâcher la mâchoire"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "kihon-neutral-1",
+      "type": "kihon",
+      "title": "Kihon neutre",
+      "description": "Référence sobre : stabilité, verticalité et relâchement.",
+      "instructions": "Revenir à un axe stable, attention uniforme.",
+      "durationDefaultSec": 300,
+      "level": "debutant",
+      "tags": ["reference"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Pas de technique réservée"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "marche-lente-1",
+      "type": "marche",
+      "title": "Marche lente",
+      "description": "Déplacement lent, axe stable.",
+      "instructions": "Pas courts, attention aux appuis.",
+      "durationDefaultSec": 420,
+      "level": "debutant",
+      "tags": ["lenteur", "appuis"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Surface stable"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "marche-stabilite-2",
+      "type": "marche",
+      "title": "Marche stabilité",
+      "description": "Mettre l'accent sur la stabilité du bassin.",
+      "instructions": "Avancer sans précipitation, bassin stable.",
+      "durationDefaultSec": 420,
+      "level": "debutant",
+      "tags": ["stabilite"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Rester confortable"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "marche-axe-3",
+      "type": "marche",
+      "title": "Marche axe",
+      "description": "Explorer un axe long dans le mouvement.",
+      "instructions": "Étirer l'axe sans rigidité.",
+      "durationDefaultSec": 420,
+      "level": "intermediaire",
+      "tags": ["axe"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Relâchement continu"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "marche-respiration-4",
+      "type": "marche",
+      "title": "Marche respiration",
+      "description": "Coordination souffle et pas.",
+      "instructions": "Respirer sur deux pas, observer la régularité.",
+      "durationDefaultSec": 360,
+      "level": "debutant",
+      "tags": ["souffle"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Ne pas forcer la respiration"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "marche-silence-5",
+      "type": "marche",
+      "title": "Marche silence",
+      "description": "Déplacement silencieux et attentif.",
+      "instructions": "Réduire le bruit des pas.",
+      "durationDefaultSec": 360,
+      "level": "debutant",
+      "tags": ["silence"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Éviter les obstacles"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "marche-integrite-6",
+      "type": "marche",
+      "title": "Marche intégrité",
+      "description": "Relier posture et déplacement.",
+      "instructions": "Même qualité d'axe entre les pas.",
+      "durationDefaultSec": 360,
+      "level": "intermediaire",
+      "tags": ["continuite"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Rester dans une zone stable"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "posture-axe-1",
+      "type": "posture",
+      "title": "Posture axe long",
+      "description": "Posture debout, axe allongé.",
+      "instructions": "Aligner tête, bassin, appuis.",
+      "durationDefaultSec": 300,
+      "level": "debutant",
+      "tags": ["axe"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Relâcher les épaules"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "posture-appuis-2",
+      "type": "posture",
+      "title": "Posture appuis",
+      "description": "Stabilité à partir des appuis.",
+      "instructions": "Sentir la plante des pieds au sol.",
+      "durationDefaultSec": 300,
+      "level": "debutant",
+      "tags": ["appuis"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Ne pas verrouiller les genoux"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "posture-relachement-3",
+      "type": "posture",
+      "title": "Posture relâchement",
+      "description": "Explorer un relâchement continu.",
+      "instructions": "Relâcher les épaules, la nuque, la mâchoire.",
+      "durationDefaultSec": 300,
+      "level": "debutant",
+      "tags": ["relachement"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Respiration naturelle"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "posture-ouverture-4",
+      "type": "posture",
+      "title": "Posture ouverture",
+      "description": "Ouvrir sans tension.",
+      "instructions": "Sensation d'espace dans la cage thoracique.",
+      "durationDefaultSec": 240,
+      "level": "intermediaire",
+      "tags": ["ouverture"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Ne pas cambrer"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "posture-fixite-5",
+      "type": "posture",
+      "title": "Posture fixité",
+      "description": "Maintenir une fixité douce.",
+      "instructions": "Rester immobile et disponible.",
+      "durationDefaultSec": 240,
+      "level": "intermediaire",
+      "tags": ["fixite"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Changer si inconfort"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "posture-axe-6",
+      "type": "posture",
+      "title": "Posture continuité",
+      "description": "Relier axe et stabilité interne.",
+      "instructions": "Même qualité de présence du début à la fin.",
+      "durationDefaultSec": 240,
+      "level": "intermediaire",
+      "tags": ["continuite"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Relâcher les doigts"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "meditation-observation-1",
+      "type": "meditation",
+      "title": "Méditation observation",
+      "description": "Observer sans analyser.",
+      "instructions": "Revenir au souffle quand l'esprit s'écarte.",
+      "durationDefaultSec": 420,
+      "level": "debutant",
+      "tags": ["observation"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Assise stable"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "meditation-calme-2",
+      "type": "meditation",
+      "title": "Méditation calme",
+      "description": "Stabiliser le rythme interne.",
+      "instructions": "Respiration douce, attention ouverte.",
+      "durationDefaultSec": 420,
+      "level": "debutant",
+      "tags": ["calme"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Posture confortable"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "meditation-integrite-3",
+      "type": "meditation",
+      "title": "Méditation intégrité",
+      "description": "Unifier attention et posture.",
+      "instructions": "Sentir l'ensemble du corps.",
+      "durationDefaultSec": 360,
+      "level": "intermediaire",
+      "tags": ["integration"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Ne pas forcer la durée"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "meditation-silence-4",
+      "type": "meditation",
+      "title": "Méditation silence",
+      "description": "Rester simple, sans commentaire.",
+      "instructions": "Silence intérieur, présence stable.",
+      "durationDefaultSec": 360,
+      "level": "intermediaire",
+      "tags": ["silence"],
+      "autonome": true,
+      "requiresTeacherValidation": false,
+      "safetyNotes": ["Respiration naturelle"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "reserved-1",
+      "type": "posture",
+      "title": "Posture réservée A",
+      "description": "Contenu réservé à une validation enseignant.",
+      "instructions": "Accès restreint.",
+      "durationDefaultSec": 300,
+      "level": "avance",
+      "tags": ["reserve"],
+      "autonome": false,
+      "requiresTeacherValidation": true,
+      "safetyNotes": ["Validation enseignant requise"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "reserved-2",
+      "type": "marche",
+      "title": "Marche réservée B",
+      "description": "Contenu réservé à une validation enseignant.",
+      "instructions": "Accès restreint.",
+      "durationDefaultSec": 300,
+      "level": "avance",
+      "tags": ["reserve"],
+      "autonome": false,
+      "requiresTeacherValidation": true,
+      "safetyNotes": ["Validation enseignant requise"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "reserved-3",
+      "type": "meditation",
+      "title": "Méditation réservée C",
+      "description": "Contenu réservé à une validation enseignant.",
+      "instructions": "Accès restreint.",
+      "durationDefaultSec": 300,
+      "level": "avance",
+      "tags": ["reserve"],
+      "autonome": false,
+      "requiresTeacherValidation": true,
+      "safetyNotes": ["Validation enseignant requise"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "reserved-4",
+      "type": "rituel",
+      "title": "Rituel réservé D",
+      "description": "Contenu réservé à une validation enseignant.",
+      "instructions": "Accès restreint.",
+      "durationDefaultSec": 300,
+      "level": "avance",
+      "tags": ["reserve"],
+      "autonome": false,
+      "requiresTeacherValidation": true,
+      "safetyNotes": ["Validation enseignant requise"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "reserved-5",
+      "type": "kihon",
+      "title": "Kihon réservé E",
+      "description": "Contenu réservé à une validation enseignant.",
+      "instructions": "Accès restreint.",
+      "durationDefaultSec": 300,
+      "level": "avance",
+      "tags": ["reserve"],
+      "autonome": false,
+      "requiresTeacherValidation": true,
+      "safetyNotes": ["Validation enseignant requise"],
+      "media": {"kind": "none"}
+    },
+    {
+      "id": "reserved-6",
+      "type": "posture",
+      "title": "Posture réservée F",
+      "description": "Contenu réservé à une validation enseignant.",
+      "instructions": "Accès restreint.",
+      "durationDefaultSec": 300,
+      "level": "avance",
+      "tags": ["reserve"],
+      "autonome": false,
+      "requiresTeacherValidation": true,
+      "safetyNotes": ["Validation enseignant requise"],
+      "media": {"kind": "none"}
+    }
+  ],
+  "templates": [
+    {
+      "id": "template-45-axe-calme",
+      "title": "Axe & calme",
+      "intent": "Trouver un axe stable dans le mouvement.",
+      "durationTotalSec": 2700,
+      "blocks": [
+        {
+          "id": "b1",
+          "phase": "misogi",
+          "label": "Misogi",
+          "items": [{"contentItemId": "misogi-breath-1", "durationSec": 300, "intensity": "soft", "guidanceMode": "minimal"}]
+        },
+        {
+          "id": "b2",
+          "phase": "kihon",
+          "label": "Kihon",
+          "items": [{"contentItemId": "kihon-neutral-1", "durationSec": 300, "intensity": "soft", "guidanceMode": "normal"}]
+        },
+        {
+          "id": "b3",
+          "phase": "programme",
+          "label": "Programme — mise en place",
+          "items": [
+            {"contentItemId": "posture-axe-1", "durationSec": 300, "intensity": "normal", "guidanceMode": "minimal"},
+            {"contentItemId": "marche-lente-1", "durationSec": 300, "intensity": "normal", "guidanceMode": "minimal"}
+          ]
+        },
+        {
+          "id": "b4",
+          "phase": "programme",
+          "label": "Programme — mise à l'épreuve",
+          "items": [
+            {"contentItemId": "posture-fixite-5", "durationSec": 240, "intensity": "tonique", "guidanceMode": "minimal"}
+          ]
+        },
+        {
+          "id": "b5",
+          "phase": "programme",
+          "label": "Programme — intégration",
+          "items": [
+            {"contentItemId": "marche-integrite-6", "durationSec": 300, "intensity": "normal", "guidanceMode": "minimal"}
+          ]
+        },
+        {
+          "id": "b6",
+          "phase": "retour_stable",
+          "label": "Retour stable",
+          "items": [{"contentItemId": "meditation-calme-2", "durationSec": 300, "intensity": "soft", "guidanceMode": "minimal"}]
+        },
+        {
+          "id": "b7",
+          "phase": "discussion",
+          "label": "Discussion",
+          "items": []
+        }
+      ]
+    },
+    {
+      "id": "template-60-mobilite",
+      "title": "Mobilité / Fixité",
+      "intent": "Explorer le passage entre mouvement et immobilité.",
+      "durationTotalSec": 3600,
+      "blocks": [
+        {"id": "b1", "phase": "misogi", "label": "Misogi", "items": [{"contentItemId": "misogi-attention-2", "durationSec": 240, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b2", "phase": "kihon", "label": "Kihon", "items": [{"contentItemId": "kihon-neutral-1", "durationSec": 300, "intensity": "soft", "guidanceMode": "normal"}]},
+        {"id": "b3", "phase": "programme", "label": "Programme — mise en place", "items": [{"contentItemId": "marche-stabilite-2", "durationSec": 420, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b4", "phase": "programme", "label": "Programme — mise à l'épreuve", "items": [{"contentItemId": "posture-fixite-5", "durationSec": 300, "intensity": "tonique", "guidanceMode": "minimal"}]},
+        {"id": "b5", "phase": "programme", "label": "Programme — intégration", "items": [{"contentItemId": "marche-respiration-4", "durationSec": 420, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b6", "phase": "retour_stable", "label": "Retour stable", "items": [{"contentItemId": "meditation-observation-1", "durationSec": 420, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b7", "phase": "discussion", "label": "Discussion", "items": []}
+      ]
+    },
+    {
+      "id": "template-60-circulation",
+      "title": "Circulation / Stagnation",
+      "intent": "Observer la fluidité et les zones plus fixes.",
+      "durationTotalSec": 3600,
+      "blocks": [
+        {"id": "b1", "phase": "misogi", "label": "Misogi", "items": [{"contentItemId": "misogi-posture-3", "durationSec": 300, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b2", "phase": "kihon", "label": "Kihon", "items": [{"contentItemId": "kihon-neutral-1", "durationSec": 300, "intensity": "soft", "guidanceMode": "normal"}]},
+        {"id": "b3", "phase": "programme", "label": "Programme — mise en place", "items": [{"contentItemId": "posture-relachement-3", "durationSec": 300, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b4", "phase": "programme", "label": "Programme — mise à l'épreuve", "items": [{"contentItemId": "marche-axe-3", "durationSec": 420, "intensity": "tonique", "guidanceMode": "minimal"}]},
+        {"id": "b5", "phase": "programme", "label": "Programme — intégration", "items": [{"contentItemId": "meditation-integrite-3", "durationSec": 360, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b6", "phase": "retour_stable", "label": "Retour stable", "items": [{"contentItemId": "meditation-calme-2", "durationSec": 360, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b7", "phase": "discussion", "label": "Discussion", "items": []}
+      ]
+    },
+    {
+      "id": "template-90-interne",
+      "title": "Interne / Externe",
+      "intent": "Stabiliser l'interne tout en restant disponible à l'externe.",
+      "durationTotalSec": 5400,
+      "blocks": [
+        {"id": "b1", "phase": "misogi", "label": "Misogi", "items": [{"contentItemId": "misogi-breath-1", "durationSec": 300, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b2", "phase": "kihon", "label": "Kihon", "items": [{"contentItemId": "kihon-neutral-1", "durationSec": 360, "intensity": "soft", "guidanceMode": "normal"}]},
+        {"id": "b3", "phase": "programme", "label": "Programme — mise en place", "items": [{"contentItemId": "posture-appuis-2", "durationSec": 360, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b4", "phase": "programme", "label": "Programme — mise à l'épreuve", "items": [{"contentItemId": "marche-silence-5", "durationSec": 420, "intensity": "tonique", "guidanceMode": "minimal"}]},
+        {"id": "b5", "phase": "programme", "label": "Programme — intégration", "items": [{"contentItemId": "meditation-silence-4", "durationSec": 360, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b6", "phase": "retour_stable", "label": "Retour stable", "items": [{"contentItemId": "meditation-observation-1", "durationSec": 420, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b7", "phase": "discussion", "label": "Discussion", "items": []}
+      ]
+    },
+    {
+      "id": "template-45-retour",
+      "title": "Retour stable (débutant)",
+      "intent": "Construire un retour stable après la pratique.",
+      "durationTotalSec": 2700,
+      "blocks": [
+        {"id": "b1", "phase": "misogi", "label": "Misogi", "items": [{"contentItemId": "misogi-attention-2", "durationSec": 240, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b2", "phase": "kihon", "label": "Kihon", "items": [{"contentItemId": "kihon-neutral-1", "durationSec": 240, "intensity": "soft", "guidanceMode": "normal"}]},
+        {"id": "b3", "phase": "programme", "label": "Programme — mise en place", "items": [{"contentItemId": "posture-axe-1", "durationSec": 240, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b4", "phase": "programme", "label": "Programme — mise à l'épreuve", "items": [{"contentItemId": "marche-lente-1", "durationSec": 360, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b5", "phase": "programme", "label": "Programme — intégration", "items": [{"contentItemId": "posture-relachement-3", "durationSec": 300, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b6", "phase": "retour_stable", "label": "Retour stable", "items": [{"contentItemId": "meditation-calme-2", "durationSec": 360, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b7", "phase": "discussion", "label": "Discussion", "items": []}
+      ]
+    },
+    {
+      "id": "template-60-tonifiant",
+      "title": "Tonifiant + fermeture stable",
+      "intent": "Monter en intensité puis revenir à un état stable.",
+      "durationTotalSec": 3600,
+      "blocks": [
+        {"id": "b1", "phase": "misogi", "label": "Misogi", "items": [{"contentItemId": "misogi-posture-3", "durationSec": 300, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b2", "phase": "kihon", "label": "Kihon", "items": [{"contentItemId": "kihon-neutral-1", "durationSec": 300, "intensity": "soft", "guidanceMode": "normal"}]},
+        {"id": "b3", "phase": "programme", "label": "Programme — mise en place", "items": [{"contentItemId": "marche-respiration-4", "durationSec": 420, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b4", "phase": "programme", "label": "Programme — mise à l'épreuve", "items": [{"contentItemId": "posture-ouverture-4", "durationSec": 300, "intensity": "tonique", "guidanceMode": "minimal"}]},
+        {"id": "b5", "phase": "programme", "label": "Programme — intégration", "items": [{"contentItemId": "marche-integrite-6", "durationSec": 360, "intensity": "normal", "guidanceMode": "minimal"}]},
+        {"id": "b6", "phase": "retour_stable", "label": "Retour stable", "items": [{"contentItemId": "meditation-integrite-3", "durationSec": 360, "intensity": "soft", "guidanceMode": "minimal"}]},
+        {"id": "b7", "phase": "discussion", "label": "Discussion", "items": []}
+      ]
+    }
+  ]
+}
