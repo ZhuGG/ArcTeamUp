@@ -4,129 +4,664 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AikishintaisoAssistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        color-scheme: light dark;
-        --bg: #f7f7f8;
-        --text: #1b1b1f;
-        --muted: #555b66;
-        --accent: #2a5bd7;
+        color-scheme: light;
+        --bg: #f7f6fb;
+        --text: #1c1c25;
+        --muted: #5c5f72;
+        --accent: #5d5dff;
+        --accent-strong: #2f2fcc;
         --card: #ffffff;
+        --shadow: 0 24px 60px rgba(28, 28, 37, 0.12);
+        --radius: 24px;
       }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0f1115;
-          --text: #f1f3f7;
-          --muted: #b4b8c2;
-          --accent: #7aa2ff;
-          --card: #171a21;
-        }
+
+      * {
+        box-sizing: border-box;
       }
+
       body {
         margin: 0;
-        font-family: "Inter", "SF Pro Text", system-ui, -apple-system, sans-serif;
-        background: var(--bg);
+        font-family: "Manrope", system-ui, sans-serif;
+        background: radial-gradient(circle at top, #f0f4ff, #f9f7fb 45%, #f7f6fb 70%);
         color: var(--text);
-        line-height: 1.6;
+        min-height: 100vh;
       }
-      main {
-        max-width: 880px;
-        margin: 0 auto;
-        padding: 64px 24px;
-      }
+
       header {
-        margin-bottom: 40px;
+        padding: 48px 6vw 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
       }
-      h1 {
-        font-size: clamp(2.25rem, 3vw, 3rem);
-        margin-bottom: 12px;
+
+      .hero {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        align-items: center;
       }
-      .subtitle {
+
+      .hero h1 {
+        font-size: clamp(2.4rem, 3vw, 3.4rem);
+        margin: 0 0 12px;
+      }
+
+      .hero p {
+        margin: 0;
         font-size: 1.1rem;
         color: var(--muted);
-        margin: 0;
       }
-      .card {
-        background: var(--card);
+
+      .hero-card {
+        background: linear-gradient(135deg, rgba(93, 93, 255, 0.12), rgba(255, 255, 255, 0.7));
         padding: 24px;
-        border-radius: 16px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-        margin-bottom: 24px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(93, 93, 255, 0.2);
       }
-      ul {
-        padding-left: 20px;
+
+      main {
+        padding: 0 6vw 80px;
+        display: grid;
+        gap: 24px;
       }
-      a {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 600;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
+
       .grid {
         display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
-      footer {
-        color: var(--muted);
+
+      .panel {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .panel h2 {
+        margin-top: 0;
+      }
+
+      .tag {
+        display: inline-flex;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(93, 93, 255, 0.12);
+        color: var(--accent-strong);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .stats {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+
+      .stat {
+        padding: 16px;
+        border-radius: 18px;
+        background: #f4f4ff;
+      }
+
+      .stat strong {
+        font-size: 1.5rem;
+      }
+
+      .session-controls {
+        display: grid;
+        gap: 16px;
+      }
+
+      label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      select,
+      input[type="range"],
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 14px;
+        border: 1px solid #d9d9e8;
+        font-family: inherit;
+        font-size: 1rem;
+        background: #fbfbff;
+      }
+
+      textarea {
+        min-height: 90px;
+        resize: vertical;
+      }
+
+      button {
+        border: none;
+        padding: 12px 18px;
+        border-radius: 14px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        background: var(--accent);
+        color: white;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 14px 30px rgba(93, 93, 255, 0.25);
+      }
+
+      button.secondary {
+        background: #e9e9ff;
+        color: var(--accent-strong);
+        box-shadow: none;
+      }
+
+      button:active {
+        transform: scale(0.98);
+      }
+
+      .session-display {
+        display: grid;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .progress {
+        height: 10px;
+        border-radius: 999px;
+        background: #ececf6;
+        overflow: hidden;
+      }
+
+      .progress span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, #5d5dff, #8a7dff);
+      }
+
+      .phase-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .phase-item {
+        padding: 12px 16px;
+        border-radius: 16px;
+        background: #f7f7ff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .phase-item.active {
+        background: rgba(93, 93, 255, 0.16);
+        font-weight: 600;
+      }
+
+      .journal-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .journal-entry {
+        padding: 14px;
+        border-radius: 16px;
+        background: #f5f5ff;
+      }
+
+      .toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 40px 6vw 60px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 32px;
+        }
+        .hero-card {
+          order: -1;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <header>
-        <h1>AikishintaisoAssistant</h1>
-        <p class="subtitle">
-          Compagnon mobile pour la pratique de l’Aikishintaiso, conçu pour
-          accompagner la pratique sans remplacer l’enseignant.
-        </p>
-      </header>
+    <header>
+      <div class="hero">
+        <div>
+          <span class="tag">Assistant de pratique</span>
+          <h1>Prépare, guide et consigne ta pratique Aikishintaiso.</h1>
+          <p>
+            Une application clé en main pour organiser tes séances, rester régulier,
+            et pratiquer en conscience — sans jamais remplacer l’enseignant.
+          </p>
+        </div>
+        <div class="hero-card">
+          <h2>Rituel du jour</h2>
+          <p>
+            Choisis un format, lance le minuteur et laisse-toi guider dans les phases.
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <div>Streak</div>
+              <strong id="streakValue">0 jours</strong>
+            </div>
+            <div class="stat">
+              <div>Temps total</div>
+              <strong id="totalMinutes">0 min</strong>
+            </div>
+            <div class="stat">
+              <div>Dernière séance</div>
+              <strong id="lastSession">-</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-      <section class="card">
-        <h2>Pourquoi ce projet ?</h2>
-        <p>
-          AikishintaisoAssistant vise à proposer un cadre clair, éthique et
-          autonome pour la pratique, tout en rappelant que l’encadrement par un
-          enseignant reste essentiel.
-        </p>
+    <main>
+      <section class="grid">
+        <div class="panel">
+          <h2>Construire une séance</h2>
+          <div class="session-controls">
+            <div>
+              <label for="preset">Format</label>
+              <select id="preset"></select>
+            </div>
+            <div>
+              <label for="focus">Intention</label>
+              <select id="focus">
+                <option value="présence">Présence & posture</option>
+                <option value="souffle">Souffle & relâchement</option>
+                <option value="axes">Axes & alignement</option>
+                <option value="mobilité">Mobilité & fluidité</option>
+              </select>
+            </div>
+            <div>
+              <label for="intensity">Intensité : <span id="intensityValue">3</span>/5</label>
+              <input type="range" id="intensity" min="1" max="5" value="3" />
+            </div>
+            <div>
+              <label for="duration">Durée totale : <span id="durationValue">20</span> min</label>
+              <input type="range" id="duration" min="10" max="45" value="20" step="5" />
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="soundToggle" checked />
+              Notifications sonores
+            </label>
+            <button id="startSession">Lancer la séance</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Guide en direct</h2>
+          <div class="session-display">
+            <div>
+              <p class="tag" id="sessionStatus">Prêt·e à démarrer</p>
+              <h3 id="phaseTitle">Sélectionne un format</h3>
+              <p id="phaseDescription">Les phases apparaîtront ici.</p>
+            </div>
+            <div>
+              <div class="progress"><span id="progressBar"></span></div>
+              <p><strong id="timer">00:00</strong></p>
+              <div>
+                <button class="secondary" id="pauseSession">Pause</button>
+                <button class="secondary" id="skipPhase">Phase suivante</button>
+              </div>
+            </div>
+          </div>
+          <ul class="phase-list" id="phaseList"></ul>
+        </div>
       </section>
 
       <section class="grid">
-        <div class="card">
-          <h3>Fonctionnalités prévues</h3>
+        <div class="panel">
+          <h2>Checklist de pratique</h2>
+          <p>Avant de commencer, ancre-toi dans le ressenti :</p>
           <ul>
-            <li>Agenda et séances guidées autorisées.</li>
-            <li>Bibliothèque structurée et journal de pratique.</li>
-            <li>Mode enseignant avec programmes et retours.</li>
+            <li>Alignement tête/bassin/sol.</li>
+            <li>Respiration ample, mâchoire relâchée.</li>
+            <li>Écoute des appuis, poids réparti.</li>
+            <li>Intention claire pour la séance.</li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Stack technique</h3>
-          <ul>
-            <li>Mobile : React Native (Expo) + TypeScript.</li>
-            <li>Backend : Supabase (Auth + Postgres + Storage).</li>
-            <li>Offline-first : SQLite local + synchronisation.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Documentation</h3>
-          <ul>
-            <li><a href="README.md">README</a></li>
-            <li><a href="docs/ARCHITECTURE.md">Architecture</a></li>
-            <li><a href="ETHICS.md">Cadre éthique</a></li>
-          </ul>
+
+        <div class="panel">
+          <h2>Journal rapide</h2>
+          <div class="session-controls">
+            <div>
+              <label for="mood">État du jour</label>
+              <select id="mood">
+                <option value="calme">Calme</option>
+                <option value="centré">Centré</option>
+                <option value="énergisé">Énergisé</option>
+                <option value="fatigué">Fatigué</option>
+              </select>
+            </div>
+            <div>
+              <label for="note">Note de pratique</label>
+              <textarea id="note" placeholder="Sensations, découvertes, points à revoir..."></textarea>
+            </div>
+            <button id="saveJournal">Enregistrer</button>
+            <div class="journal-list" id="journalList"></div>
+          </div>
         </div>
       </section>
-
-      <footer class="card">
-        <p>
-          Ce dépôt est un squelette minimal. Les dépendances et scripts seront
-          complétés au fil de l’implémentation.
-        </p>
-      </footer>
     </main>
+
+    <footer>
+      <p>
+        Cet assistant est conçu pour soutenir une pratique autonome et consciente.
+        Pour progresser, rien ne remplace l’encadrement d’un enseignant qualifié.
+      </p>
+    </footer>
+
+    <script>
+      const presets = [
+        {
+          id: "rituel",
+          title: "Rituel matinal",
+          description: "Réveiller les axes et la respiration.",
+          phases: [
+            { title: "Centrage", description: "Posture stable, souffle naturel.", minutes: 4 },
+            { title: "Mobilisation", description: "Rotations douces, relâcher les épaules.", minutes: 6 },
+            { title: "Étirement actif", description: "Allonger les chaînes, lenteur consciente.", minutes: 6 },
+            { title: "Intégration", description: "Retour au calme et gratitude.", minutes: 4 }
+          ]
+        },
+        {
+          id: "flow",
+          title: "Flow fluide",
+          description: "Enchaînements continus pour la coordination.",
+          phases: [
+            { title: "Ancrage", description: "Stabilité des appuis, regard souple.", minutes: 5 },
+            { title: "Spirales", description: "Hanches/épaules en opposition douce.", minutes: 8 },
+            { title: "Déploiement", description: "Ouverture thoracique, extension contrôlée.", minutes: 7 }
+          ]
+        },
+        {
+          id: "recup",
+          title: "Récupération active",
+          description: "Séance lente pour relâcher les tensions.",
+          phases: [
+            { title: "Scan corporel", description: "Observer, relâcher, respirer.", minutes: 6 },
+            { title: "Ondulations", description: "Micro-mouvements fluides.", minutes: 8 },
+            { title: "Apaisement", description: "Respiration longue et profonde.", minutes: 6 }
+          ]
+        }
+      ];
+
+      const presetSelect = document.getElementById("preset");
+      const phaseList = document.getElementById("phaseList");
+      const phaseTitle = document.getElementById("phaseTitle");
+      const phaseDescription = document.getElementById("phaseDescription");
+      const sessionStatus = document.getElementById("sessionStatus");
+      const progressBar = document.getElementById("progressBar");
+      const timerDisplay = document.getElementById("timer");
+      const intensityInput = document.getElementById("intensity");
+      const intensityValue = document.getElementById("intensityValue");
+      const durationInput = document.getElementById("duration");
+      const durationValue = document.getElementById("durationValue");
+      const startButton = document.getElementById("startSession");
+      const pauseButton = document.getElementById("pauseSession");
+      const skipButton = document.getElementById("skipPhase");
+      const soundToggle = document.getElementById("soundToggle");
+      const streakValue = document.getElementById("streakValue");
+      const totalMinutes = document.getElementById("totalMinutes");
+      const lastSession = document.getElementById("lastSession");
+      const moodSelect = document.getElementById("mood");
+      const noteInput = document.getElementById("note");
+      const saveJournal = document.getElementById("saveJournal");
+      const journalList = document.getElementById("journalList");
+
+      let session = null;
+      let timerInterval = null;
+      let remainingSeconds = 0;
+
+      const state = {
+        logs: JSON.parse(localStorage.getItem("aiki-logs") || "[]"),
+        stats: JSON.parse(localStorage.getItem("aiki-stats") || "{}")
+      };
+
+      const formatMinutes = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+      };
+
+      const updateStats = () => {
+        const total = state.logs.reduce((sum, log) => sum + log.duration, 0);
+        const last = state.logs[0];
+        totalMinutes.textContent = `${total} min`;
+        lastSession.textContent = last ? last.date : "-";
+        const streak = state.stats.streak || 0;
+        streakValue.textContent = `${streak} jours`;
+      };
+
+      const updateJournalList = () => {
+        journalList.innerHTML = "";
+        state.logs.slice(0, 4).forEach((log) => {
+          const item = document.createElement("div");
+          item.className = "journal-entry";
+          item.innerHTML = `
+            <strong>${log.date}</strong> · ${log.mood} · ${log.duration} min<br />
+            <span>${log.note || "Aucune note"}</span>
+          `;
+          journalList.appendChild(item);
+        });
+      };
+
+      const renderPresets = () => {
+        presetSelect.innerHTML = "";
+        presets.forEach((preset) => {
+          const option = document.createElement("option");
+          option.value = preset.id;
+          option.textContent = preset.title;
+          presetSelect.appendChild(option);
+        });
+      };
+
+      const getSelectedPreset = () => presets.find((preset) => preset.id === presetSelect.value);
+
+      const renderPhaseList = (phases, activeIndex = -1) => {
+        phaseList.innerHTML = "";
+        phases.forEach((phase, index) => {
+          const li = document.createElement("li");
+          li.className = "phase-item" + (index === activeIndex ? " active" : "");
+          li.innerHTML = `<span>${phase.title}</span><span>${phase.minutes} min</span>`;
+          phaseList.appendChild(li);
+        });
+      };
+
+      const updatePhaseDisplay = () => {
+        if (!session) {
+          phaseTitle.textContent = "Sélectionne un format";
+          phaseDescription.textContent = "Les phases apparaîtront ici.";
+          sessionStatus.textContent = "Prêt·e à démarrer";
+          progressBar.style.width = "0%";
+          timerDisplay.textContent = "00:00";
+          renderPhaseList([]);
+          return;
+        }
+
+        const phase = session.phases[session.currentIndex];
+        phaseTitle.textContent = phase.title;
+        phaseDescription.textContent = phase.description;
+        sessionStatus.textContent = `Phase ${session.currentIndex + 1} / ${session.phases.length}`;
+        renderPhaseList(session.phases, session.currentIndex);
+      };
+
+      const playTone = () => {
+        if (!soundToggle.checked) return;
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        oscillator.type = "sine";
+        oscillator.frequency.value = 740;
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+        gain.gain.setValueAtTime(0.001, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.2, audioContext.currentTime + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.5);
+      };
+
+      const startTimer = () => {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+          if (!session || session.paused) return;
+          remainingSeconds -= 1;
+          if (remainingSeconds <= 0) {
+            nextPhase();
+            return;
+          }
+          timerDisplay.textContent = formatMinutes(remainingSeconds);
+          const totalPhaseSeconds = session.phases[session.currentIndex].minutes * 60;
+          const progress = 100 - (remainingSeconds / totalPhaseSeconds) * 100;
+          progressBar.style.width = `${progress}%`;
+        }, 1000);
+      };
+
+      const configureSession = () => {
+        const preset = getSelectedPreset();
+        if (!preset) return;
+        const totalDuration = Number(durationInput.value);
+        const ratio = totalDuration / preset.phases.reduce((sum, phase) => sum + phase.minutes, 0);
+        const phases = preset.phases.map((phase) => ({
+          ...phase,
+          minutes: Math.max(2, Math.round(phase.minutes * ratio))
+        }));
+        const adjustedTotal = phases.reduce((sum, phase) => sum + phase.minutes, 0);
+        session = {
+          preset,
+          phases,
+          currentIndex: 0,
+          paused: false,
+          totalDuration: adjustedTotal
+        };
+        remainingSeconds = phases[0].minutes * 60;
+        timerDisplay.textContent = formatMinutes(remainingSeconds);
+        progressBar.style.width = "0%";
+        updatePhaseDisplay();
+      };
+
+      const endSession = () => {
+        clearInterval(timerInterval);
+        sessionStatus.textContent = "Séance terminée";
+        phaseTitle.textContent = "Bravo pour ta régularité";
+        phaseDescription.textContent = "Note tes sensations dans le journal pour suivre ta progression.";
+        progressBar.style.width = "100%";
+        playTone();
+        const now = new Date();
+        const log = {
+          date: now.toLocaleDateString("fr-FR"),
+          duration: session.totalDuration,
+          mood: moodSelect.value,
+          note: noteInput.value.trim()
+        };
+        state.logs.unshift(log);
+        state.logs = state.logs.slice(0, 12);
+        localStorage.setItem("aiki-logs", JSON.stringify(state.logs));
+        const lastDate = state.stats.lastDate;
+        const today = now.toLocaleDateString("fr-FR");
+        if (lastDate) {
+          const diff = Math.floor((now - new Date(lastDate)) / (1000 * 60 * 60 * 24));
+          state.stats.streak = diff === 1 ? (state.stats.streak || 0) + 1 : 1;
+        } else {
+          state.stats.streak = 1;
+        }
+        state.stats.lastDate = today;
+        localStorage.setItem("aiki-stats", JSON.stringify(state.stats));
+        updateStats();
+        updateJournalList();
+        session = null;
+      };
+
+      const nextPhase = () => {
+        if (!session) return;
+        playTone();
+        session.currentIndex += 1;
+        if (session.currentIndex >= session.phases.length) {
+          endSession();
+          return;
+        }
+        remainingSeconds = session.phases[session.currentIndex].minutes * 60;
+        timerDisplay.textContent = formatMinutes(remainingSeconds);
+        progressBar.style.width = "0%";
+        updatePhaseDisplay();
+      };
+
+      startButton.addEventListener("click", () => {
+        configureSession();
+        if (!session) return;
+        session.paused = false;
+        pauseButton.textContent = "Pause";
+        sessionStatus.textContent = "Séance en cours";
+        playTone();
+        startTimer();
+      });
+
+      pauseButton.addEventListener("click", () => {
+        if (!session) return;
+        session.paused = !session.paused;
+        pauseButton.textContent = session.paused ? "Reprendre" : "Pause";
+        sessionStatus.textContent = session.paused ? "Séance en pause" : "Séance en cours";
+      });
+
+      skipButton.addEventListener("click", () => {
+        if (!session) return;
+        nextPhase();
+      });
+
+      intensityInput.addEventListener("input", (event) => {
+        intensityValue.textContent = event.target.value;
+      });
+
+      durationInput.addEventListener("input", (event) => {
+        durationValue.textContent = event.target.value;
+      });
+
+      saveJournal.addEventListener("click", () => {
+        const now = new Date();
+        const log = {
+          date: now.toLocaleDateString("fr-FR"),
+          duration: session ? session.totalDuration : 0,
+          mood: moodSelect.value,
+          note: noteInput.value.trim()
+        };
+        state.logs.unshift(log);
+        state.logs = state.logs.slice(0, 12);
+        localStorage.setItem("aiki-logs", JSON.stringify(state.logs));
+        updateJournalList();
+        noteInput.value = "";
+      });
+
+      renderPresets();
+      configureSession();
+      updateStats();
+      updateJournalList();
+    </script>
   </body>
 </html>
