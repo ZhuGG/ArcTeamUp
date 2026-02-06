@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AikishintaisoAssistant</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f7f7f8;
+        --text: #1b1b1f;
+        --muted: #555b66;
+        --accent: #2a5bd7;
+        --card: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1115;
+          --text: #f1f3f7;
+          --muted: #b4b8c2;
+          --accent: #7aa2ff;
+          --card: #171a21;
+        }
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", "SF Pro Text", system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      main {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 64px 24px;
+      }
+      header {
+        margin-bottom: 40px;
+      }
+      h1 {
+        font-size: clamp(2.25rem, 3vw, 3rem);
+        margin-bottom: 12px;
+      }
+      .subtitle {
+        font-size: 1.1rem;
+        color: var(--muted);
+        margin: 0;
+      }
+      .card {
+        background: var(--card);
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        margin-bottom: 24px;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      footer {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>AikishintaisoAssistant</h1>
+        <p class="subtitle">
+          Compagnon mobile pour la pratique de l’Aikishintaiso, conçu pour
+          accompagner la pratique sans remplacer l’enseignant.
+        </p>
+      </header>
 
+      <section class="card">
+        <h2>Pourquoi ce projet ?</h2>
+        <p>
+          AikishintaisoAssistant vise à proposer un cadre clair, éthique et
+          autonome pour la pratique, tout en rappelant que l’encadrement par un
+          enseignant reste essentiel.
+        </p>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h3>Fonctionnalités prévues</h3>
+          <ul>
+            <li>Agenda et séances guidées autorisées.</li>
+            <li>Bibliothèque structurée et journal de pratique.</li>
+            <li>Mode enseignant avec programmes et retours.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Stack technique</h3>
+          <ul>
+            <li>Mobile : React Native (Expo) + TypeScript.</li>
+            <li>Backend : Supabase (Auth + Postgres + Storage).</li>
+            <li>Offline-first : SQLite local + synchronisation.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Documentation</h3>
+          <ul>
+            <li><a href="README.md">README</a></li>
+            <li><a href="docs/ARCHITECTURE.md">Architecture</a></li>
+            <li><a href="ETHICS.md">Cadre éthique</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="card">
+        <p>
+          Ce dépôt est un squelette minimal. Les dépendances et scripts seront
+          complétés au fil de l’implémentation.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
