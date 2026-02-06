@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aikishintaiso Assistant",
+    "slug": "aikishintaiso-assistant",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["**/*"]
+  }
+}
